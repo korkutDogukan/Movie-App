@@ -1,0 +1,132 @@
+.movie-app {
+  color: $gray;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 4% 6%;
+  &-title {
+    h1 {
+      font-size: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+
+  &-search {
+    position: relative;
+    &-bar {
+      width: 450px;
+      padding: 13px 45px;
+      border: 2px solid $gray;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) transparent;
+      border-radius: 10px;
+      font-size: 15px;
+      color: $gray;
+      outline: none;
+
+      &::placeholder {
+        color: $gray;
+        font-size: 15px;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+    }
+  }
+
+  &-movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+
+      &-image {
+        img {
+          width: 220px;
+          height: 300px;
+          border-radius: 30px;
+        }
+      }
+
+      &-name {
+        font-size: 22px;
+        max-width: 180px;
+        position: relative;
+        display: inline-block;
+
+        .tooltiptext {
+          visibility: hidden;
+          width: 220px;
+          background-color: black;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 10px 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 20%;
+          margin-left: -60px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .tooltiptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+
+        &:hover {
+          .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      &-genre {
+        font-size: 14px;
+      }
+
+      &-date {
+        font-weight: 400;
+      }
+
+      &-button {
+        font-size: 20px;
+        border: none;
+        background: transparent;
+        outline: none;
+        position: absolute;
+        bottom: 40px;
+        right: 3px;
+        color: $red-1;
+        cursor: pointer;
+      }
+    }
+  }
+}

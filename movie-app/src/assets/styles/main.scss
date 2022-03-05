@@ -87,6 +87,8 @@ video {
   font-size: 100%;
   vertical-align: baseline;
   font-family: "Fredoka", sans-serif;
+  box-sizing: border-box;
+  background: $gray-3;
 }
 
 article,

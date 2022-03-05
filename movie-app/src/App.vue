@@ -1,12 +1,6 @@
-<script setup>
-</script>
-
 <template>
-  <h3>selam</h3>
+  <HomePage />
 </template>
-
-<style lang="scss">
-h3 {
-  color: $velvet;
-}
-</style>
+<script setup>
+import HomePage from "./components/HomePage/HomePage.vue";
+</script>
