@@ -27,6 +27,7 @@
         {{ filmTitle(film.Title) }}
         <span class="tooltiptext">{{ film.Title }}</span>
       </div>
+      <div class="movie-app-movies-info-type">{{ film.Type }}</div>
       <div class="movie-app-movies-info-date">
         <i class="fa-solid fa-calendar-days"></i>
         {{ film.Year }}
