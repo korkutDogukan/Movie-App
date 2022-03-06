@@ -1,0 +1,24 @@
+.movie-app-search {
+  position: relative;
+  &-bar {
+    width: 40%;
+    padding: 13px 45px;
+    border: 2px solid $gray;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) transparent;
+    border-radius: 10px;
+    font-size: 15px;
+    color: $gray;
+    outline: none;
+
+    &::placeholder {
+      color: $gray;
+      font-size: 15px;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+}
