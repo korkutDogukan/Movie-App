@@ -17,7 +17,15 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </label>
     </div>
-    <div class="movie-app-movies">
+    <div v-show="moviesShowCheck" class="movie-app-movies">
+      <div class="movie-app-movies-control">
+        <button @click="sortFilmListAscending" class="movie-app-movies-control-buttons">
+          <i class="fa-solid fa-arrow-down"></i>
+        </button>
+        <button @click="sortFilmListDescending" class="movie-app-movies-control-buttons">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
       <div v-for="(film, index) in filmInfo" :key="index" class="movie-app-movies-info">
         <div class="movie-app-movies-info-image">
           <img :src="`${film.Poster}`" />
@@ -26,7 +34,6 @@
           {{ filmTitle(film.Title) }}
           <span class="tooltiptext">{{ film.Title }}</span>
         </div>
-        <div class="movie-app-movies-info-genre">{{ filmGenre }}</div>
         <div class="movie-app-movies-info-date">
           <i class="fa-solid fa-calendar-days"></i>
           {{ film.Year }}
@@ -40,21 +47,18 @@
 </template>
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const userSearch = ref("");
-const filmInfo = ref(null);
-const filmGenre = ref(null);
+const filmInfo = ref([]);
+const moviesShowCheck = ref(false);
 
 const getFilmInfo = () => {
   if (userSearch.value.length > 0) {
-    axios.get(`http://www.omdbapi.com/?apikey=8845743f&t=${userSearch.value}`).then(get_response => {
-      filmGenre.value = get_response.data.Genre;
-    });
     axios.get(`http://www.omdbapi.com/?apikey=8845743f&s=${userSearch.value}`).then(get_response => {
       filmInfo.value = get_response.data.Search;
-      console.log(get_response.data.Search);
     });
+    moviesShowCheck.value = true;
     userSearch.value = "";
     return;
   }
@@ -67,7 +71,18 @@ const filmTitle = (title) => {
   } else {
     return title;
   }
-  // return title;
 }
+
+const sortFilmListAscending = computed(() => {
+  filmInfo.value.sort((a, b) => {
+    return b.Year - a.Year;
+  });
+})
+
+const sortFilmListDescending = computed(() => {
+  filmInfo.value.sort((a, b) => {
+    return a.Year - b.Year;
+  });
+})
 </script>
 <style src="./HomePage.scss" lang="scss" />
