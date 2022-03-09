@@ -1,5 +1,8 @@
 <template >
   <div class="movie-app">
+    <router-link class="movie-app-like" :to="{ name: 'LikedPage' }">
+      <i class="fa-brands fa-gratipay"></i>
+    </router-link>
     <HomePageTitle />
     <SearchBar @getFilmInfo="getFilmInfo" />
     <MovieList v-show="moviesShowCheck" :filmInfo="filmInfo" />

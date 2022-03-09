@@ -6,4 +6,25 @@
   gap: 40px;
   padding: 4% 6%;
   background: $gray-3;
+  position: relative;
+
+  &-like {
+    align-self: flex-end;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-decoration: none;
+
+    i {
+      font-size: 30px;
+      color: $red-1;
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        color: $red;
+      }
+    }
+  }
 }
