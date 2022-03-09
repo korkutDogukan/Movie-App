@@ -33,15 +33,30 @@
         {{ film.Year }}
       </div>
       <button class="movie-app-movies-info-button">
-        <i class="fa-regular fa-heart"></i>
+        <i @click.prevent="favItem(film, $event.currentTarget)" class="fa-regular fa-heart"></i>
       </button>
     </div>
   </div>
 </template>
 <script setup>
-import { defineProps, computed } from "vue";
+import { defineProps, computed, ref } from "vue";
 
 const props = defineProps(['filmInfo']);
+const likedMovieList = ref([]);
+
+const favItem = (film, target) => {
+  let list = target.classList;
+  if (list.contains("fa-regular")) {
+    list.remove("fa-regular");
+    list.add("fa-solid");
+    likedMovieList.value.push(film);
+  } else {
+    list.remove("fa-solid");
+    list.add("fa-regular");
+    likedMovieList.value = likedMovieList.value.filter(f => f != film);
+  }
+};
+
 
 const filmTitle = (title) => {
   if (title.length > 14) {

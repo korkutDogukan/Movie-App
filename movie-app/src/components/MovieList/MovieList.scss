@@ -141,6 +141,11 @@
       right: 3px;
       color: $red-1;
       cursor: pointer;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: $red;
+      }
     }
   }
 }
