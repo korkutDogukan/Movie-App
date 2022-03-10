@@ -17,7 +17,7 @@
         </button>
       </div>
     </div>
-    <div v-for="(film, index) in props.filmInfo" :key="index" class="movie-app-movies-info">
+    <div v-for="(film, index) in filmInfo" :key="index" class="movie-app-movies-info">
       <div class="movie-app-movies-info-image">
         <router-link :to="{ name: 'HomePage' }">
           <img :src="`${film.Poster}`" />
@@ -33,30 +33,16 @@
         {{ film.Year }}
       </div>
       <button class="movie-app-movies-info-button">
-        <i @click.prevent="favItem(film, $event.currentTarget)" class="fa-regular fa-heart"></i>
+        <i @click.prevent="emit('favItem', film, $event.currentTarget)" class="fa-regular fa-heart"></i>
       </button>
     </div>
   </div>
 </template>
 <script setup>
-import { defineProps, computed, ref } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(['filmInfo']);
-const likedMovieList = ref([]);
-
-const favItem = (film, target) => {
-  let list = target.classList;
-  if (list.contains("fa-regular")) {
-    list.remove("fa-regular");
-    list.add("fa-solid");
-    likedMovieList.value.push(film);
-  } else {
-    list.remove("fa-solid");
-    list.add("fa-regular");
-    likedMovieList.value = likedMovieList.value.filter(f => f != film);
-  }
-};
-
+const emit = defineEmits(['favItem']);
 
 const filmTitle = (title) => {
   if (title.length > 14) {
@@ -78,4 +64,4 @@ const sortFilmListDescending = computed(() => {
   });
 })
 </script>
-<style src="./MovieList.scss" lang="scss" />
+<style src="./MovieList.scss" lang="scss" scoped/>

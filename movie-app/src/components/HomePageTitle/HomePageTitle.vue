@@ -6,4 +6,4 @@
 </template>
 <script setup>
 </script>
-<style src="./HomePageTitle.scss" lang="scss" />
+<style src="./HomePageTitle.scss" lang="scss" scoped/>

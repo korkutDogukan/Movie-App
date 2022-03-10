@@ -1,8 +1,10 @@
 <template>
   <div class="movie-app-message">
-    <p>The movie you were looking for was not found.</p>
+    <p>
+      <slot></slot>
+    </p>
   </div>
 </template>
 <script setup>
 </script>
-<style src="./NoMovieMessage.scss" lang="scss" />
+<style src="./NoMovieMessage.scss" lang="scss" scoped/>

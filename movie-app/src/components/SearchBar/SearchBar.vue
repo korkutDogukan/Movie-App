@@ -21,4 +21,4 @@ const emit = defineEmits(['getFilmInfo']);
 const userSearch = ref("");
 
 </script>
-<style src="./SearchBar.scss" lang="scss" />
+<style src="./SearchBar.scss" lang="scss" scoped/>
